@@ -77,9 +77,9 @@ const requestHandler = (header, body, sock) => {
       console.log(`Matched ${route.method} ${route.url}`);
 
       const param = target.match(url_regex).groups;
-      const query = query_parser(param.query);
+      const query = query_parser(param.query || '');
 
-      console.log('passing');
+      console.log('Passing to handler');
 
       route.handler(header, param, query, body, sendResponse);
 
